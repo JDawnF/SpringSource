@@ -12,10 +12,11 @@ import com.baichen.dao.BookDao;
 @Service
 public class BookService {
 
-	//@Qualifier("bookDao")
+	@Qualifier("bookDao")	// 指定装配的组件id
 	//@Autowired(required=false)
 	//@Resource(name="bookDao2")
-	@Inject
+//	@Inject
+	@Autowired
 	private BookDao bookDao;
 	
 	public void print(){
