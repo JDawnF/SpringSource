@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class Person {
 
-    //使用@Value赋值；
+    //使用@Value赋值:
     //1、基本数值
     //2、可以写SpEL； #{}
     //3、可以写${}；取出配置文件【properties】中的值（在运行环境变量里面的值）
@@ -12,6 +12,8 @@ public class Person {
     private String name;
     @Value("#{20-2}")
     private Integer age;
+    @Value("${person.nickName}")    // 取出外部配置文件中的值
+    private String nickName;
 
     public String getName() {
         return name;
@@ -29,6 +31,14 @@ public class Person {
         this.age = age;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     public Person(String name, Integer age) {
         super();
         this.name = name;
@@ -37,12 +47,11 @@ public class Person {
 
     public Person() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     @Override
     public String toString() {
-        return "Person [name=" + name + ", age=" + age + "]";
+        return "Person [name=" + name + ", age=" + age + ", nickName="+nickName+"]";
     }
 
 
