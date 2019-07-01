@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  * 		多实例：在每次获取的时候创建对象
  * BeanPostProcessor.postProcessBeforeInitialization
  * 初始化：
- * 		对象创建完成，并赋值好，调用初始化方法。。。
+ * 		对象创建完成，并赋值好，调用初始化方法
  * BeanPostProcessor.postProcessAfterInitialization
  * 销毁：
  * 		单实例：容器关闭的时候进行销毁
