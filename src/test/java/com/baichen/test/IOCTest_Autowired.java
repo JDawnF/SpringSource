@@ -1,5 +1,8 @@
 package com.baichen.test;
 
+import com.baichen.bean.Boss;
+import com.baichen.bean.Car;
+import com.baichen.bean.Color;
 import com.baichen.config.MainConfigOfAutowired;
 import com.baichen.dao.BookDao;
 import com.baichen.service.BookService;
@@ -9,11 +12,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 /**
  * @Program: IOCTest_Autowired
  * @Author: baichen
- * @Description: Ëá™Âä®Ë£ÖÈÖç ÊµãËØïÁ±ª
+ * @Description: ◊‘∂Ø◊∞≈‰ ≤‚ ‘¿‡
  */
 public class IOCTest_Autowired {
     @Test
-    public void test1(){
+    public void test1() {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAutowired.class);
         BookService bookService = applicationContext.getBean(BookService.class);
         System.out.println(bookService);
@@ -21,14 +24,13 @@ public class IOCTest_Autowired {
         BookDao bean = applicationContext.getBean(BookDao.class);
         System.out.println(bean);
 
-//        Boss boss = applicationContext.getBean(Boss.class);
-//        System.out.println(boss);
-//        Car car = applicationContext.getBean(Car.class);
-//        System.out.println(car);
-//
-//        Color color = applicationContext.getBean(Color.class);
-//        System.out.println(color);
-//        System.out.println(applicationContext);
+        Boss boss = applicationContext.getBean(Boss.class);
+        System.out.println(boss);
+        Car car = applicationContext.getBean(Car.class);
+        System.out.println(car);
+        Color color = applicationContext.getBean(Color.class);
+        System.out.println(color);
+        System.out.println("≤‚ ‘µƒIOC»›∆˜£∫" + applicationContext); // ≤‚ ‘µƒIOC»›∆˜
         applicationContext.close();
     }
 }
