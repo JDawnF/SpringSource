@@ -33,7 +33,8 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
+        <!-- https://mvnrepository.com/artifact/javax.inject/javax.inject
+            导入依赖后才可以使用@Inject注解-->
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
