@@ -3,7 +3,7 @@ package com.baichen.bean;
 /**
  * @Program: ColorFactoryBean
  * @Author: baichen
- * @Description: 颜色工厂bean
+ * @Description: 颜色工厂bean，在Spring中可以利用FactoryBean来产生一些自定义配置的bean。
  */
 import org.springframework.beans.factory.FactoryBean;
 
