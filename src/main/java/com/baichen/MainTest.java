@@ -24,10 +24,11 @@ public class MainTest {
 //		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
 //		Person bean = applicationContext.getBean(Person.class);
 //		System.out.println(bean);
-//
+
+		// 通过注解的形式注入bean，然后可以通过类名获取
 //		String[] namesForType = applicationContext.getBeanNamesForType(Person.class);
 //		for (String name : namesForType) {
-//			System.out.println(name);
+//			System.out.println(name);		// 输出bean的名字
 //		}
 	
 	}

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
  * @Author: baichen
  * @Description:
  */
+// 名字默认是类名首字母小写
 @Repository
 public class BookDao {
     private String label = "1";

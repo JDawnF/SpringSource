@@ -8,12 +8,13 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-
+	<!--配置文件方式导入外部配置文件的方法-->
 	<context:property-placeholder location="classpath:person.properties" />
 	<!-- 包扫描、只要标注了@Controller、@Service、@Repository，@Component -->
 	 <!-- <context:component-scan base-package="com.baichen" use-default-filters="false"></context:component-scan> -->
 	<bean id="person" class="com.baichen.bean.Person"  scope="prototype" >
 		<property name="age" value="12"></property>
+<!--		<property name="nickName" value="${xxx}"></property>-->
 		<property name="name" value="zhangsan"></property>
 	</bean>
 	

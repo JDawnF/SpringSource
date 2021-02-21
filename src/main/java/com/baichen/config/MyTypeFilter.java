@@ -10,7 +10,7 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.core.type.filter.TypeFilter;
 
 /**
- * 自定义过滤规则
+ * ComponentScan注解过滤时，自定义过滤规则
  */
 public class MyTypeFilter implements TypeFilter {
 
@@ -30,6 +30,7 @@ public class MyTypeFilter implements TypeFilter {
         //获取类名
         String className = classMetadata.getClassName();
         System.out.println("className--->" + className);
+        // 指定一个规则，只扫描类名包含er的bean
         if (className.contains("er")) {
             return true;        // 匹配成功
         }

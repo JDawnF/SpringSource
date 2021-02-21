@@ -12,12 +12,13 @@ import javax.annotation.PreDestroy;
  * @Program: Dog
  * @Author: baichen
  * @Description: 实现ApplicationContextAware中的setApplicationContext方法，这样在其他容器中就可以使用这个IoC容器
- * 具体是看ApplicationContextAwareProcessor.java
+ * 具体是ApplicationContextAwareProcessor.java实现的，实现了BeanPostProcessor接口
  */
 @Component
 public class Dog implements ApplicationContextAware {
     private ApplicationContext applicationContext;
 
+    // 创建对象
     public Dog() {
         System.out.println("dog constructor...");
     }
@@ -34,6 +35,7 @@ public class Dog implements ApplicationContextAware {
         System.out.println("dog ... @PreDestroy...");
     }
 
+    // 保存容器
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }

@@ -16,10 +16,10 @@ public class Boss {
     //构造器要用的组件，都是从容器中获取
 //如果组件只有一个有参构造器，这个有参构造器的@Autowired可以省略，参数位置的组件还是可以自动从容器中获取
 //    @Autowired
-//    public Boss(@Autowired Car car) {
-    public Boss(Car car) {
+//    public Boss(@Autowired Car car) {         // 效果一样
+    public Boss(Car car) {  // 有参构造器
         this.car = car;
-        System.out.println("Boss...有参构造器");
+        System.out.println("================Boss的有参构造器================");
     }
 
     public Car getCar() {

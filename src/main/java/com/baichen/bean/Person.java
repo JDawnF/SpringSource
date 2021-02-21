@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class Person {
 
-    //使用@Value赋值:
+    //使用@Value赋值(对应IOCTest_PropertyValue测试类):
     //1、基本数值
     //2、可以写SpEL； #{}
-    //3、可以写${}；取出配置文件【properties】中的值（在运行环境变量里面的值）
+    //3、可以写${}；取出配置文件【properties】中的值（在运行环境变量environment里面的值）
     @Value("baichen")
     private String name;
     @Value("#{20-2}")
     private Integer age;
-    @Value("${person.nickName}")    // 取出外部配置文件中的值
+    @Value("${person.nickName}")    // 取出外部配置文件(这里是person.properties)中的值
     private String nickName;
 
     public String getName() {

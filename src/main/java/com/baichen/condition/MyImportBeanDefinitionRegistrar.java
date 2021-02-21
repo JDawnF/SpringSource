@@ -24,7 +24,7 @@ public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegi
         if(definition && definition2){
             //指定Bean定义信息；（Bean的类型，Bean的scope等）
             RootBeanDefinition beanDefinition = new RootBeanDefinition(RainBow.class);
-            //注册一个Bean，指定bean名,不用全限定名
+            //注册一个Bean，指定bean名,不用全限定名(即全类名)
             registry.registerBeanDefinition("rainBow", beanDefinition);
         }
     }

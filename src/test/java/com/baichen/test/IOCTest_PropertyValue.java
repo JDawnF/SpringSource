@@ -17,11 +17,12 @@ public class IOCTest_PropertyValue {
     @Test
     public void test01() {
         printBeans(applicationContext);
-        System.out.println("=============");
+        System.out.println("====================================================");
         Person person = (Person) applicationContext.getBean("person");
         System.out.println(person);
+        // 也可以通过ConfigurableEnvironment取出配置文件中配置的值
         ConfigurableEnvironment environment = applicationContext.getEnvironment();
-        String property = environment.getProperty("person.nickName");
+        String property = environment.getProperty("person.nickName");   // 对应配置文件中的key
         System.out.println("nickName是："+property);
         applicationContext.close();
     }
