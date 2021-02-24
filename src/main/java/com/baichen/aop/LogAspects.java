@@ -8,7 +8,7 @@ import java.util.Arrays;
 /**
  * @Program: LogAspects
  * @Author: baichen
- * @Description: AOP日志打印类
+ * @Description: AOP日志打印类，前置通知--目标方法--后置通知--如果正常返回的话会调用返回通知
  */
 @Aspect     // 表示这是一个切面类
 public class LogAspects {
@@ -23,7 +23,7 @@ public class LogAspects {
     @Before("pointCut()")
     public void logStart(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();    // 获取参数表
-        // 打印了方法名
+        // 打印了目标方法名(这里是div)
         System.out.println("" + joinPoint.getSignature().getName() + "运行。。。@Before:参数列表是：{" + Arrays.asList(args) + "}");
     }
 
@@ -32,13 +32,13 @@ public class LogAspects {
         System.out.println(""+joinPoint.getSignature().getName()+"结束。。。@After");
     }
 
-    //JoinPoint一定要出现在参数表的第一位,returning表示返回值，这里将返回值赋值给result
+    //JoinPoint一定要出现在参数表的第一位,returning接收返回值，这里将返回值赋值给result
     @AfterReturning(value="pointCut()",returning="result")
     public void logReturn(JoinPoint joinPoint,Object result){
         System.out.println(""+joinPoint.getSignature().getName()+"正常返回。。。@AfterReturning:运行结果：{"+result+"}");
     }
 
-    // 同理，throwing表示抛出的异常
+    // 跟返回通知同理，throwing表示抛出的异常，也要用一个参数接收异常
     @AfterThrowing(value="pointCut()",throwing="exception")
     public void logException(JoinPoint joinPoint,Exception exception){
         System.out.println(""+joinPoint.getSignature().getName()+"异常。。。异常信息：{"+exception+"}");
