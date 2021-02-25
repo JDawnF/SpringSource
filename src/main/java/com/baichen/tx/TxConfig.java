@@ -26,12 +26,13 @@ import javax.sql.DataSource;
  * 原理(与AOP类似)：
  * 1）、@EnableTransactionManagement:利用TransactionManagementConfigurationSelector给容器中会导入组件,导入两个组件:
  * 		AutoProxyRegistrar 和 ProxyTransactionManagementConfiguration,通过AdviceMode判断要导入的组件,默认是Proxy:
- * 		AdviceMode mode() default AdviceMode.PROXY;(EnableTransactionManagement.java)
+ * 	        在@EnableTransactionManagement注解上为mode=xxx
+ * 		    AdviceMode mode() default AdviceMode.PROXY;(EnableTransactionManagement.java)
  * 2）、AutoProxyRegistrar：
  * 		给容器中注册一个 InfrastructureAdvisorAutoProxyCreator 组件,作用是:
- * 		利用后置处理器机制在对象创建以后，包装对象，返回一个代理对象（增强器），代理对象执行方法利用拦截器链进行调用(与前面的AOP类似)；
+ * 		    利用后置处理器机制在对象创建以后，包装对象，返回一个代理对象（增强器），代理对象执行方法利用拦截器链进行调用(与前面的AOP类似)；
  * 3）、ProxyTransactionManagementConfiguration :
- * 	1、给容器中注册事务增强器(transactionAdvisor方法),有两个:
+ * 	1、给容器中注册事务增强器(transactionAdvisor方法),有两个，事务增强器和事务拦截器:
  * 	    1）、事务增强器要用事务注解的信息，AnnotationTransactionAttributeSource解析事务注解
  * 		2）、事务拦截器(TransactionInterceptor)：
  * 			保存了事务属性信息和事务管理器,这是一个 MethodInterceptor,在目标方法执行的时候(是代理对象在执行),执行拦截器链,此时只有事务拦截器：
@@ -41,7 +42,7 @@ import javax.sql.DataSource;
  * 				如果异常，获取到事务管理器，利用事务管理回滚操作；
  * 				如果正常，利用事务管理器，提交事务
  */
-@EnableTransactionManagement
+@EnableTransactionManagement    // 开启事务管理
 @ComponentScan("com.baichen.tx")
 @Configuration
 public class TxConfig {
@@ -63,7 +64,7 @@ public class TxConfig {
         return jdbcTemplate;
     }
 
-    //注册事务管理器在容器中,再加上事务注解才可以实现事务
+    //注册事务管理器在容器中,再在具体的service中加上事务注解(@Transactional)才可以实现事务
     @Bean
     public PlatformTransactionManager transactionManager() throws Exception{
         return new DataSourceTransactionManager(dataSource());      // 要控制数据源

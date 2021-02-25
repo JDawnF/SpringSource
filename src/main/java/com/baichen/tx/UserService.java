@@ -14,7 +14,7 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    @Transactional
+    @Transactional      // 光有这个还不行
     public void insertUser(){
         userDao.insert();
         //otherDao.other();xxx
