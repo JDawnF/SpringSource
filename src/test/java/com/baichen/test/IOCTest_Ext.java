@@ -15,7 +15,7 @@ public class IOCTest_Ext {
     public void test01() {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ExtConfig.class);
         //发布事件,监听器会监听到:
-        applicationContext.publishEvent(new ApplicationEvent(new String("我发布的时间")) {
+        applicationContext.publishEvent(new ApplicationEvent(new String("我发布的时间:")) {   // 匿名内部类
         });
         applicationContext.close();
     }

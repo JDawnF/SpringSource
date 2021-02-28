@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
-    // classes表示监听的事件,可以写多个
+    // classes表示监听的事件,可以写多个,或者子类ContextRefreshedEvent等
     @EventListener(classes = {ApplicationEvent.class})
     public void listen(ApplicationEvent event) {
         // 获取到事件

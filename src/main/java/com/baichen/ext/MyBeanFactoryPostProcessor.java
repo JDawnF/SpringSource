@@ -10,9 +10,9 @@ import java.util.Arrays;
 /**
  * @Program: MyBeanFactoryPostProcessor
  * @Author: baichen
- * @Description: 后置处理器
+ * @Description: 后置处理器，对应的配置类{@link com.baichen.ext.ExtConfig}
  */
-@Component
+@Component  // 加入容器
 public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         System.out.println("MyBeanFactoryPostProcessor...postProcessBeanFactory...");
